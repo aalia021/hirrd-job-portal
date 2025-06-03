@@ -17,6 +17,7 @@ import {
 
 import useFetch from "@/hooks/useFetch";
 import { getSingleJob, updateHiringStatus } from "@/api/apiJobs";
+import { ApplyJobDrawer } from "@/components/apply-job";
 
 const JobPage = () => {
   const { id } = useParams();
@@ -107,7 +108,7 @@ const JobPage = () => {
         source={job?.requirements}
         className="bg-transparent sm:text-lg" // add global ul styles - tutorial
       />
-      {/* {job?.recruiter_id !== user?.id && (
+      {job?.recruiter_id !== user?.id && (
         <ApplyJobDrawer
           job={job}
           user={user}
@@ -115,7 +116,7 @@ const JobPage = () => {
           applied={job?.applications?.find((ap) => ap.candidate_id === user.id)}
         />
       )}
-      {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
+      {/* {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
       {job?.applications?.length > 0 && job?.recruiter_id === user?.id && (
         <div className="flex flex-col gap-2">
           <h2 className="font-bold mb-4 text-xl ml-1">Applications</h2>
@@ -129,5 +130,4 @@ const JobPage = () => {
     </div>
   );
 };
-
 export default JobPage;
